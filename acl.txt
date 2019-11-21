@@ -1,0 +1,42 @@
+# di mikrotik /ip fi raw > udp:443 conten=youtube.com content=ytimg.com action=drop
+
+acl id_base url_regex -i (ytimg|youtube)\.com\/yts\/jsbin\/player.*\/id_ID\/base.js
+acl id_remote url_regex -i (ytimg|youtube)\.com\/yts\/jsbin\/player.*\/id_ID\/remote.js
+acl id_captions url_regex -i (ytimg|youtube)\.com\/yts\/jsbin\/player.*\/id_ID\/captions.js
+acl id_endscreen url_regex -i (ytimg|youtube)\.com\/yts\/jsbin\/player.*\/id_ID\/endscreen.js
+acl id_miniplayer url_regex -i (ytimg|youtube)\.com\/yts\/jsbin\/player.*\/id_ID\/miniplayer.js
+acl id_annotations url_regex -i (ytimg|youtube)\.com\/yts\/jsbin\/player.*\/id_ID\/annotations_module.js
+acl en_base url_regex -i (ytimg|youtube)\.com\/yts\/jsbin\/player.*\/en_US\/base.js
+acl en_remote url_regex -i (ytimg|youtube)\.com\/yts\/jsbin\/player.*\/en_US\/remote.js
+acl en_captions url_regex -i (ytimg|youtube)\.com\/yts\/jsbin\/player.*\/en_US\/captions.js
+acl en_endscreen url_regex -i (ytimg|youtube)\.com\/yts\/jsbin\/player.*\/en_US\/endscreen.js
+acl en_miniplayer url_regex -i (ytimg|youtube)\.com\/yts\/jsbin\/player.*\/en_US\/miniplayer.js
+acl en_annotations url_regex -i (ytimg|youtube)\.com\/yts\/jsbin\/player.*\/en_US\/annotations_module.js
+
+deny_info 301:https://orocknet.com/yt_locker/id_base360.js id_base
+deny_info 301:https://orocknet.com/yt_locker/id_remote.js id_remote
+deny_info 301:https://orocknet.com/yt_locker/id_captions.js id_captions
+deny_info 301:https://orocknet.com/yt_locker/id_endscreen.js id_endscreen
+deny_info 301:https://orocknet.com/yt_locker/id_miniplayer.js id_miniplayer
+deny_info 301:https://orocknet.com/yt_locker/id_annotations_module.js id_annotations
+deny_info 301:https://orocknet.com/yt_locker/en_base360.js en_base
+deny_info 301:https://orocknet.com/yt_locker/en_remote.js en_remote
+deny_info 301:https://orocknet.com/yt_locker/en_captions.js en_captions
+deny_info 301:https://orocknet.com/yt_locker/en_endscreen.js en_endscreen
+deny_info 301:https://orocknet.com/yt_locker/en_miniplayer.js en_miniplayer
+deny_info 301:https://orocknet.com/yt_locker/en_annotations_module.js en_annotations
+
+http_access deny id_annotations
+http_access deny id_base
+http_access deny id_captions
+http_access deny id_endscreen
+http_access deny id_remote
+http_access deny id_miniplayer
+http_access deny en_annotations
+http_access deny en_base
+http_access deny en_captions
+http_access deny en_endscreen
+http_access deny en_remote
+http_access deny en_miniplayer
+
+# kredit script: topsetting.com
